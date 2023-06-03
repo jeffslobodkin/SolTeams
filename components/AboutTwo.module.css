@@ -1,0 +1,36 @@
+.about {
+    margin-top: 15%;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin-bottom: 10%;
+  }
+  
+  .container {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  @media (max-width: 768px) {
+    .container {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+
+  .imageContainer {
+    display: flex;
+    justify-content: center;
+    padding-top: 8%;
+  }
+  
+
+  .Image {
+    padding-top: 10%;
+    width: 500px;
+    margin-bottom: 10%;
+  }
+
+  @media (max-width: 768px) {
+    .Image {
+      width: 200px;
+    }
+  }

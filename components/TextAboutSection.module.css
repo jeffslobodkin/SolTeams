@@ -1,0 +1,83 @@
+.textSection {
+  width: 50%;
+  color: white;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 30px;
+  margin-left: 20%;
+}
+
+.textSection p {
+  font-size: medium;
+  color: white;
+  margin-bottom: 10%;
+}
+
+.textSection h2 {
+  font-size: 50px;
+  font-weight: bold;
+  overflow: hidden; /* Ensures text does not overflow the container */
+  white-space: nowrap; /* Prevents line breaks */
+  /* Animation properties */
+  }
+
+
+.textSection .textWrapper {
+  position: relative;
+}
+
+@media (max-width: 768px) {
+  .textSection {
+    width: 100%;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 8%;
+    text-align: center;
+  }
+
+  .textSection h {
+      align-items: center;
+  }
+
+  .textSection p {
+      margin-top: 0%;
+  }
+
+
+
+  .textSection button {
+      border: solid 2px white;
+      border-radius: 60px;
+      padding-top: 4px;
+      padding-bottom: 4px;
+      padding-right: 20px;
+      padding-left: 20px;
+      font-size: small;
+      background-image: linear-gradient(to right, rgb(46, 37, 97) , rgb(151, 46, 151));
+      transition: transform 0.3s ease-in-out;
+  }
+}
+
+.textSection button {
+  border: solid 2px white;
+  border-radius: 60px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-right: 20px;
+  padding-left: 20px;
+  font-size: large;
+  background-image: linear-gradient(to right, rgb(46, 37, 97) , rgb(151, 46, 151));
+  transition: transform 0.3s ease-in-out;
+}
+
+.textSection button:hover {
+  transform: scale(1.2);
+}
+
+.textSection li::before {
+  content: "•"; /* Specify the content of the marker */
+  margin-right: 1%;
+}
+
+.textSection .list {
+  color: gray;
+}

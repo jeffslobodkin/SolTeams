@@ -1,0 +1,16 @@
+.introduction {
+    margin-top: 5%;
+  }
+  
+  .container {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  @media (max-width: 768px) {
+    .container {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+  
