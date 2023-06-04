@@ -68,6 +68,11 @@ const NavbarPopout = () => {
         <section className={styles.login}>
           <div>{session && session.user ? session.user.name : <DiscordLoginButton />}</div>
         </section>
+        <section className={styles.login}>
+          <Link href="./marketplace">
+          <button>Marketplace</button>
+          </Link>
+          </section>
       </div>
 
       

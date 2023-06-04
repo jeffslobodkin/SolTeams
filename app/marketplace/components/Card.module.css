@@ -1,5 +1,5 @@
 /* Form.module.css */
-.formContainer {
+.cardContainer {
     background-color: gray;
     padding: 20px;
     width: 300px;
@@ -11,7 +11,7 @@
     align-items: center;
   }
   
-  .formInput {
+  .label {
     background-color: transparent;
     color: white;
     border: 1px solid white;
@@ -21,19 +21,6 @@
     margin-bottom: 10px;
   }
   
-  .formButton {
-    background-color: white;
-    color: gray;
-    border: none;
-    border-radius: 5px;
-    padding: 10px;
-    width: 100%;
-    cursor: pointer;
-  }
-  
-  .formButton:hover {
-    background-color: #eee;
-  }
 
   .barContainer {
     display: flex;
