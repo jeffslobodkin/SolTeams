@@ -9,7 +9,13 @@ function DescriptionForm() {
   const [description, setDescription] = useState('');
   const [barValue, setBarValue] = useState(0);
   const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
+  const [twitter, setTwitter] = useState(''); // Add this line
   const { data: session } = useSession();
+
+
+
+
+
 
   useEffect(() => {
     if (!session) {
@@ -25,18 +31,24 @@ function DescriptionForm() {
       console.log("Username: ", session.user.name);
       console.log("Description: ", description);
       console.log("Bar Value: ", barValue);
+      console.log("Twitter: ", twitter);
       const response = await fetch('/api/auth/mongodb', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ username: session.user.name, description, barValue })
+        body: JSON.stringify({ username: session.user.name, description, barValue, twitter })
       });
 
-      const newDescription = await response.json();
     } catch (error) {
       console.error(error);
     }
+  };
+
+  const handleChange = (e) => {
+    console.log("Twitter: ", e.target.value);
+    setTwitter(e.target.value);
+    console.log("Twitter: ", twitter);
   };
 
   return (
@@ -45,6 +57,16 @@ function DescriptionForm() {
         Username:
         {!isUserLoggedIn ? <input type="text" className={styles.formInput} /> : session.user.name }
       </label>
+      <div>
+          <label>Twitter</label>
+          <input
+            type="text"
+            name="twitter"
+            value={twitter}
+            onChange={handleChange}
+            className={styles.formInput}
+          />
+        </div>
       <label>
         Description:
         <textarea className={styles.formInput} type="text" value={description} onChange={e => setDescription(e.target.value)} />

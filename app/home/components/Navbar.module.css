@@ -1,0 +1,67 @@
+.navbar {
+  position: sticky;
+  top: 0;
+  padding: 40px;
+  z-index: 100;
+  display: flex;
+  justify-content: flex-end; /* Center align items horizontally */
+  align-items: center; /* Center align items vertically */
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: large;
+  color: white;
+}
+
+.navbarScrolled {
+  background-color: rgba(0, 0, 0, 0.4); /* Black with 80% opacity */
+}
+
+.navbarMenu {
+  display: flex;
+  list-style: none;
+  padding: 0;
+}
+
+.navbarItem {
+  margin-right: 20px;
+  display: flex;
+  align-items: center; /* Center align items vertically */
+  padding-inline: 20px;
+}
+
+.navbarItem:last-child {
+  margin-right: 0; /* Remove margin for the last item */
+}
+
+.navbarItem a {
+  text-decoration: none;
+  color: #ffffff; /* Set the color of the navbar links */
+  transition: color 0.3s ease-in-out; /* Add transition effect */
+  cursor: pointer;
+}
+
+.navbarItem a:hover {
+  color: gray; /* Set the hover color */
+}
+
+.logo {
+  margin-top: 2px;
+  margin-left: 20px; /* Adjust the spacing between logos and other items */
+  width: 30px; /* Set the width of the logos */
+  height: 30px; /* Set the height of the logos */
+  transition: transform 0.3s ease-in-out; /* Add transition effect */
+  cursor: pointer;
+}
+
+.logo:hover {
+  transform: scale(1.2); /* Apply scale transform on hover */
+}
+
+.username{
+  background-color: rgb(85, 85, 165);
+  border-radius: 5px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border: 10px;
+}

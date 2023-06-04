@@ -50,20 +50,12 @@ const Navbar = () => {
   }, [session]);
 
 
+
   return (
     <nav className={`${styles.navbar} ${navbarScrolled ? styles.navbarScrolled : ''}`}>
       <ul className={styles.navbarMenu}>
         <li className={styles.navbarItem}>
-          <a onClick={() => scrollToSection('About')}>About</a>
-        </li>
-        <li className={styles.navbarItem}>
-          <a onClick={() => scrollToSection('Roadmap')}>Roadmap</a>
-        </li>
-        <li className={styles.navbarItem}>
-          <a onClick={() => scrollToSection('Sneekpeek')}>Sneak Peeks</a>
-        </li>
-        <li className={styles.navbarItem}>
-          <a onClick={() => scrollToSection('Faq')}>FAQ</a>
+          <button>Create Profile</button>
         </li>
         <li className={styles.navbarItem}>
           <Image className={styles.logo} src={twitterLogo} alt="Twitter" />
@@ -79,11 +71,11 @@ const Navbar = () => {
             </div>
           </li>
           ) : null}
-        <li className={styles.navbarItem}>
-          <Link href="./home">
+        {/* <li className={styles.navbarItem}>
+          <Link href="./marketplace">
           <button>Marketplace</button>
           </Link>
-        </li>
+        </li> */}
       </ul>
     </nav>
   );

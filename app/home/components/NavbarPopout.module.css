@@ -1,0 +1,59 @@
+.app {
+    position: relative;
+  }
+
+  .popup-button {
+    top: 20px;
+    right: 20px;
+    z-index: 1;
+  }
+
+  .close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+
+  .popup {
+    position: fixed;
+    top: 0;
+    right: -300px; /* Initially, we hide the popup to the right */
+    width: 300px;
+    height: 100vh;
+    background-image: linear-gradient(to right, #0a081b, #121125, #05050f);
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    z-index: 2;
+    overflow-y: auto;
+    transition: right 0.5s ease-in-out; /* This is the transition property */
+    color: white;
+    border: 2px solid white;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    cursor: pointer;
+  }
+
+  .popup.open {
+    right: 0; /* When open, we move the popup to the right edge */
+  }
+
+  .popup h2 {
+    margin-top: 0;
+  }
+
+  .about,
+  .roadmap {
+    margin-top: 20px;
+    /* Add more styling for your sections if needed */
+  }
+
+  .login {
+    margin-right: 100%;
+    margin-top: 20px;
+  }
+
+  .logo {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+    display: inline-block;
+  }

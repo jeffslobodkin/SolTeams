@@ -8,6 +8,10 @@ function Card({ user }) {
         <span className={styles.input}>{user.username}</span>
       </div>
       <div className={styles.label}>
+        <span>Twitter: </span>
+        <span className={styles.input}>{user.twitter}</span>
+      </div>
+      <div className={styles.label}>
         <span>Description: </span>
         <span className={styles.input}>{user.description}</span>
       </div>
