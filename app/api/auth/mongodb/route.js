@@ -6,16 +6,17 @@ export async function POST(req, res) {
       const json = await req.json();
 
       const { db } = await connectToDatabase();
-      const { username, description, barValue, twitter } = json;
+      const { username, description, barValue, twitter, image } = json;
         console.log("Usernamedfsdfsdf: ", username);
         console.log("Description: ", description);
         console.log("Bar Value: ", barValue);
         console.log("Twitter: ", twitter);
+        console.log("Image: ", image);
   
       // Insert or update the user document in the 'users' collection
       await db.collection('users').updateOne(
         { username },
-        { $set: { description, barValue, twitter } },
+        { $set: { description, barValue, twitter, image } },
         { upsert: true }
       );
   };
@@ -29,15 +30,3 @@ export async function POST(req, res) {
     return NextResponse.json(users);
   
   };
-
-
-
-
-  
-  
-  
-  
-  
-  
-  
-  

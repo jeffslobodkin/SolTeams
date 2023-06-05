@@ -1,4 +1,5 @@
 import styles from './Card.module.css';
+import Image from 'next/image';
 
 function Card({ user }) {
   return (
@@ -6,6 +7,10 @@ function Card({ user }) {
       <div className={styles.label}>
         <span>Username: </span>
         <span className={styles.input}>{user.username}</span>
+      </div>
+      <div className={styles.label}>
+        <span>Profile Picture: </span>
+        <Image alt="" src={user.image} className={styles.image} width={400} height={120}/>
       </div>
       <div className={styles.label}>
         <span>Twitter: </span>

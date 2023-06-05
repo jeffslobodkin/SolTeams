@@ -4,12 +4,14 @@ import styles from './Form.module.css';
 import { useState, useEffect } from 'react'
 import { useSession } from "next-auth/react";
 import axios from 'axios';
+import uploadToS3 from '@/lib/aws/auth';
 
 function DescriptionForm() {
   const [description, setDescription] = useState('');
   const [barValue, setBarValue] = useState(0);
   const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
   const [twitter, setTwitter] = useState(''); // Add this line
+  const [image, setImage] = useState(''); // Add this line
   const { data: session } = useSession();
 
 
@@ -37,7 +39,7 @@ function DescriptionForm() {
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ username: session.user.name, description, barValue, twitter })
+        body: JSON.stringify({ username: session.user.name, description, barValue, twitter, image })
       });
 
     } catch (error) {
@@ -51,12 +53,31 @@ function DescriptionForm() {
     console.log("Twitter: ", twitter);
   };
 
+  const handleImageChange = async (e) => {
+    console.log("Imagedasdasd: ", e.target.files[0]);
+    setImage(e.target.files[0].name);
+    console.log("Imagea: ", e.target.files[0].name);
+    const file = e.target.files[0];
+    try {
+      const imageUrl = await uploadToS3(file);
+      setImage(imageUrl);
+    } catch (error) {
+      console.error("Error uploading image: ", error);
+    }
+  };
+  
+
   return (
     <form onSubmit={handleSubmit} className={styles.formContainer}>
       <label>
         Username:
         {!isUserLoggedIn ? <input type="text" className={styles.formInput} /> : session.user.name }
       </label>
+      <label>
+        Profile Picture:
+        <input type="file" onChange={handleImageChange} className={styles.formInput} />
+      </label>
+
       <div>
           <label>Twitter</label>
           <input
