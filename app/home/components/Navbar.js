@@ -55,7 +55,9 @@ const Navbar = () => {
     <nav className={`${styles.navbar} ${navbarScrolled ? styles.navbarScrolled : ''}`}>
       <ul className={styles.navbarMenu}>
         <li className={styles.navbarItem}>
+          <Link href="/home/profile">
           <button>Create Profile</button>
+          </Link>
         </li>
         <li className={styles.navbarItem}>
           <Image className={styles.logo} src={twitterLogo} alt="Twitter" />

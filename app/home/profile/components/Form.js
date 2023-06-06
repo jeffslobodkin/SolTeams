@@ -13,6 +13,8 @@ function DescriptionForm() {
   const [twitter, setTwitter] = useState(''); // Add this line
   const [image, setImage] = useState(''); // Add this line
   const { data: session } = useSession();
+  const [fileName, setFileName] = useState('');
+
 
 
 
@@ -58,6 +60,7 @@ function DescriptionForm() {
     setImage(e.target.files[0].name);
     console.log("Imagea: ", e.target.files[0].name);
     const file = e.target.files[0];
+    setFileName(e.target.files[0].name);
     try {
       const imageUrl = await uploadToS3(file);
       setImage(imageUrl);
@@ -70,28 +73,34 @@ function DescriptionForm() {
   return (
     <form onSubmit={handleSubmit} className={styles.formContainer}>
       <label>
-        Username:
-        {!isUserLoggedIn ? <input type="text" className={styles.formInput} /> : session.user.name }
+        {!isUserLoggedIn ? <input type="text" className={styles.formInput} /> : <h1 className={styles.username}>{session.user.name}</h1> }
       </label>
-      <label>
-        Profile Picture:
-        <input type="file" onChange={handleImageChange} className={styles.formInput} />
+      <label htmlFor="fileInput" className={styles.customFileUpload}>
+        {fileName ? fileName : 'Upload Image'}
       </label>
+      <input id="fileInput" type="file" style={{ display: "none" }} onChange={handleImageChange} />
 
       <div>
-          <label>Twitter</label>
+          <label className={styles.label}>Twitter</label>
           <input
             type="text"
             name="twitter"
             value={twitter}
             onChange={handleChange}
             className={styles.formInput}
+            placeholder='Enter your Twitter handle'
           />
         </div>
-      <label>
-        Description:
-        <textarea className={styles.formInput} type="text" value={description} onChange={e => setDescription(e.target.value)} />
-      </label>
+        <label>
+          Position
+          <select value={description} onChange={e => setDescription(e.target.value)} className={styles.formInput}>
+            <option value="">Select a position</option>
+            <option value="Artist">Artist</option>
+            <option value="Moderator/Manager">Moderator/Manager</option>
+            <option value="Developer">Developer</option>
+            {/* Add as many options as needed */}
+          </select>
+        </label>
       Experience:
       <div className={styles.barContainer}>
         {[1, 2, 3, 4, 5].map((section) => (
