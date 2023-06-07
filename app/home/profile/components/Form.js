@@ -1,6 +1,6 @@
 "use client"
 
-import styles from './Form.module.css';
+import styles from './Form.module.scss';
 import { useState, useEffect } from 'react'
 import { useSession } from "next-auth/react";
 import axios from 'axios';
@@ -79,20 +79,17 @@ function DescriptionForm() {
         {fileName ? fileName : 'Upload Image'}
       </label>
       <input id="fileInput" type="file" style={{ display: "none" }} onChange={handleImageChange} />
-
-      <div>
-          <label className={styles.label}>Twitter</label>
-          <input
+        <div className={styles.form__group}>
+          <input 
+            className={styles.form__field}
             type="text"
             name="twitter"
             value={twitter}
             onChange={handleChange}
-            className={styles.formInput}
-            placeholder='Enter your Twitter handle'
           />
+          <label htmlFor="Twitter" placeholder='Twitter' className={styles.form__label}>Twitter</label>
         </div>
-        <label>
-          Position
+        <label className={styles.formLabel}>
           <select value={description} onChange={e => setDescription(e.target.value)} className={styles.formInput}>
             <option value="">Select a position</option>
             <option value="Artist">Artist</option>
@@ -101,6 +98,7 @@ function DescriptionForm() {
             {/* Add as many options as needed */}
           </select>
         </label>
+
       Experience:
       <div className={styles.barContainer}>
         {[1, 2, 3, 4, 5].map((section) => (
