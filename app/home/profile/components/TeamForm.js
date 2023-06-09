@@ -145,7 +145,7 @@ const Star = ({ index }) => {
                 </div>
             )}
         </div>
-
+      Experience
       <div className={styles.starContainer}>
       {[0, 1, 2, 3, 4].map((index) => <Star key={index} index={index} />)}
       </div>
