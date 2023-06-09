@@ -1,0 +1,14 @@
+/* Inventory.module.scss */
+
+.inventoryContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    padding-left: 15%;
+  }
+  
+  .cardWrapper {
+    margin: 10px; // Adjust this to control the space between cards
+    flex-basis: calc((100% / 6) - 20px); // This is for 6 cards per row, adjust the divisor (6) for more or less cards per row. Also adjust the pixel value for the space between cards
+  }
+  

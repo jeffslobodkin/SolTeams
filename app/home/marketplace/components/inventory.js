@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import Card from './Card'; // assuming you have a Card component
 import { useSession } from "next-auth/react";
-
+import styles from './inventory.module.scss';
 
 function Inventory() {
   const [users, setUsers] = useState([]);
@@ -34,10 +34,12 @@ function Inventory() {
 
 
   return (
-    <div>
-        {users.map(user => (
-            <Card key={user._id} user={user} />
-        ))}
+    <div className={styles.inventoryContainer}>
+      {users.map(user => (
+        <div key={user._id} className={styles.cardWrapper}>
+          <Card user={user} />
+        </div>
+      ))}
     </div>
   );
 }

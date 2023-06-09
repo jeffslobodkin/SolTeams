@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import styles from './Card.module.scss';
 import Image from 'next/image';
+import discord from '@/public/discord.png';
 
 function Card({ user }) {
     const [isFlipped, setIsFlipped] = useState(false);
@@ -36,7 +37,7 @@ function Card({ user }) {
             <div className={`${styles.card} ${isFlipped ? styles.isFlipped : ""}`}>
                 <div className={styles.front}>
                     <div>
-                        <Image alt="pfp" src={user.image} className={styles.image} width={250} height={20}/>
+                        <Image alt="pfp" src={user.image ? user.image : discord}  className={styles.image} width={250} height={20}/>
                     </div>
                     <div className={styles.username}>
                         <span className={styles.username}>{user.username}</span>
