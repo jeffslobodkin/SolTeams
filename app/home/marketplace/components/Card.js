@@ -10,7 +10,7 @@ function Card({ user }) {
       </div>
       <div className={styles.label}>
         <span>Profile Picture: </span>
-        <Image alt="" src={user.image} className={styles.image} width={400} height={120}/>
+        <Image alt="pfp" src={user.image} className={styles.image} width={400} height={120}/>
       </div>
       <div className={styles.label}>
         <span>Twitter: </span>

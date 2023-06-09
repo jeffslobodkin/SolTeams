@@ -1,0 +1,56 @@
+.formToggle {
+    display: flex;
+    justify-content: center;
+    margin: 4em auto 2em; // Increasing top margin to move lower and centering using 'auto'
+    border: 1px solid #000;
+    border-radius: 10px;
+    width: 50%; // Reduce the width
+    max-width: 400px; // Prevent it from becoming too large on big screens
+    overflow: hidden; 
+    background-color: #554f4f;
+    color: #fff;
+    margin-top: 10%;
+}
+
+.toggleButton {
+    background: none;
+    border: none;
+    border-right: 1px solid #000000;
+    padding: 1em 2em;
+    flex: 1; 
+    text-align: center;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:focus {
+        outline: none;
+    }
+
+    &:last-child {
+        border-right: none; 
+    }
+
+    &.active {
+        background-color: #7492be;
+    }
+}
+
+.forms {
+    display: flex;
+    justify-content: center; // Center the forms horizontally
+    align-items: center; // Center the forms vertically
+    height: 100%; // Make the container take up all the height
+    overflow: hidden;
+    position: relative; // Make it the reference for absolute positioning
+}
+
+.form {
+    opacity: 0;
+    display: none; // Hide the form by default
+
+    &.activeForm {
+        opacity: 1;
+        display: block; // Show the form when it's active
+    }
+}

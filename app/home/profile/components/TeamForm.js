@@ -1,12 +1,12 @@
 "use client"
 
-import styles from './Form.module.scss';
+import styles from './TeamForm.module.scss';
 import { useState, useEffect } from 'react'
 import { useSession } from "next-auth/react";
 import axios from 'axios';
 import uploadToS3 from '@/lib/aws/auth';
 
-function DescriptionForm() {
+function TeamForm() {
   const [description, setDescription] = useState('');
   const [barValue, setBarValue] = useState(0);
   const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
@@ -59,7 +59,7 @@ function DescriptionForm() {
   };
 
   const handleImageChange = async (e) => {
-    console.log("Inside handleImageChange solo")
+    console.log("Inside handleImageChange team")
     console.log("Imagedasdasd: ", e.target.files[0]);
     setImage(e.target.files[0].name);
     console.log("Imagea: ", e.target.files[0].name);
@@ -119,7 +119,7 @@ const Star = ({ index }) => {
           {!isUserLoggedIn ? <input type="text" className={styles.formInput} /> : <h1 className={styles.username}>{session.user.name}</h1> }
         </label>
         <label htmlFor="fileInput" className={styles.customFileUpload}>
-          {fileName ? fileName : 'Profile Picture'}
+          {fileName ? fileName : 'Team Logo'}
         </label>
       </div>
       <input id="fileInput" type="file" style={{ display: "none" }} onChange={handleImageChange} />
@@ -135,7 +135,7 @@ const Star = ({ index }) => {
           <label htmlFor="Twitter" className={styles.form__label}>Twitter</label>
         </div>
         <div className={styles.dropdown} onClick={toggleOpen}>
-            <div className={styles.dropdownheader}>{description || 'Select a position'}</div>
+            <div className={styles.dropdownheader}>{description || 'Select a need'}</div>
             {isOpen && (
                 <div className={styles.dropdownbody}>
                     <div className={styles.object} onClick={() => selectOption('Artist')}>Artist</div>
@@ -155,4 +155,4 @@ const Star = ({ index }) => {
   );
 }
 
-export default DescriptionForm;
+export default TeamForm;
