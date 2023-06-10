@@ -10,9 +10,11 @@ import DiscordLogoutButton from './DiscordLogoutButton';
 import { useSession } from "next-auth/react";
 import { useRouter } from 'next/router';
 
-const Navbar = () => {
+const Navbar = ({ searchValue, setSearchValue }) => {
   const [navbarScrolled, setNavbarScrolled] = useState(false);
   const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
+
+  const handleSearchChange = (e) => setSearchValue(e.target.value);
 
   // const router = useRouter();
 
@@ -54,6 +56,15 @@ const Navbar = () => {
   return (
     <nav className={`${styles.navbar} ${navbarScrolled ? styles.navbarScrolled : ''}`}>
       <ul className={styles.navbarMenu}>
+        <li className={styles.navbarItem}>
+          <input 
+            type="text" 
+            className={styles.searchBar}
+            value={searchValue} 
+            onChange={handleSearchChange} 
+            placeholder="Search by description..." 
+          />
+        </li>
         <li className={styles.navbarItem}>
           <Link href="/home/profile">
           <button>Create Profile</button>
