@@ -139,7 +139,7 @@ const Star = ({ index }) => {
             {isOpen && (
                 <div className={styles.dropdownbody}>
                     <div className={styles.object} onClick={() => selectOption('Artist')}>Artist</div>
-                    <div className={styles.object} onClick={() => selectOption('Moderator/Manager')}>Moderator/Manager</div>
+                    <div className={styles.object} onClick={() => selectOption('Moderator')}>Moderator/Manager</div>
                     <div className={styles.object} onClick={() => selectOption('Developer')}>Developer</div>
                     {/* Add as many options as needed */}
                 </div>
