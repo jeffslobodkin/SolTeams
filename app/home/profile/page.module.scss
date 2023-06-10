@@ -12,6 +12,21 @@
     margin-top: 10%;
 }
 
+.profileOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.7); // Adjust this to your liking
+    justify-content: center;
+    align-items: center;
+    z-index: 100; // This needs to be higher than the z-index of your other content
+  }
+  
+  
+
+
 .toggleButton {
     background: none;
     border: none;
@@ -40,7 +55,6 @@
     display: flex;
     justify-content: center; // Center the forms horizontally
     align-items: center; // Center the forms vertically
-    height: 100%; // Make the container take up all the height
     overflow: hidden;
     position: relative; // Make it the reference for absolute positioning
 }

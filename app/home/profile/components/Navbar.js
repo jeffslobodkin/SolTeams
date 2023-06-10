@@ -10,12 +10,11 @@ import DiscordLogoutButton from './DiscordLogoutButton';
 import { useSession } from "next-auth/react";
 import { useRouter } from 'next/router';
 
-const Navbar = ({ searchValue, setSearchValue, setIsProfile }) => {
+const Navbar = ({ searchValue, setSearchValue }) => {
   const [navbarScrolled, setNavbarScrolled] = useState(false);
   const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
 
   const handleSearchChange = (e) => setSearchValue(e.target.value);
-  const handleProfile = () => setIsProfile(true);
   // const router = useRouter();
 
   // const handleLogin = () => {
@@ -69,7 +68,6 @@ const Navbar = ({ searchValue, setSearchValue, setIsProfile }) => {
           {/* <Link href="/home/profile">
             <button className={styles.profile} value={isProfile} onClick={handleProfile}>Profile</button>
         </Link> */}
-         <button className={styles.profile} onClick={handleProfile}>Profile</button>
         </li>
         {/* <li className={styles.navbarItem}>
           <Image className={styles.logo} src={twitterLogo} alt="Twitter" />
