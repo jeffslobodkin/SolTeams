@@ -70,10 +70,10 @@ const Navbar = ({ searchValue, setSearchValue }) => {
           <button>Create Profile</button>
           </Link>
         </li>
-        <li className={styles.navbarItem}>
+        {/* <li className={styles.navbarItem}>
           <Image className={styles.logo} src={twitterLogo} alt="Twitter" />
           <Image className={styles.logo} src={discordLogo} alt="Discord" />
-        </li>
+        </li> */}
         <li className={styles.navbarItem}>
           <div className={styles.username}>{isUserLoggedIn ? session.user.name : <DiscordLoginButton />}</div>
         </li>
