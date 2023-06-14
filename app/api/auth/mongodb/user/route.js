@@ -19,9 +19,9 @@ export async function POST(req, res) {
         { $set: { description, barValue, twitter, image } },
         { upsert: true }
       );
-  };
+};
 
-  export async function GET(req, res) {
+export async function GET(req, res) {
     console.log("GET request received");
     const { db } = await connectToDatabase();
   

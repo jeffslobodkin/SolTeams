@@ -8,20 +8,17 @@ import uploadToS3 from '@/lib/aws/auth';
 
 function TeamForm() {
   const [description, setDescription] = useState('');
-  const [barValue, setBarValue] = useState(0);
   const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
   const [twitter, setTwitter] = useState(''); // Add this line
   const [image, setImage] = useState(''); // Add this line
   const { data: session } = useSession();
   const [fileName, setFileName] = useState('');
   const [isOpen, setIsOpen] = useState(false);
+  const [projectDescription, setProjectDescription] = useState(''); 
+  const [projectName, setProjectName] = useState('');
+  // Add this line
 
   const toggleOpen = () => setIsOpen(!isOpen);
-
-
-
-
-
 
 
   useEffect(() => {
@@ -37,14 +34,15 @@ function TeamForm() {
     try {
       console.log("Username: ", session.user.name);
       console.log("Description: ", description);
-      console.log("Bar Value: ", barValue);
+      console.log("team: ", projectName);
+      console.log("Project Description: ", projectDescription);
       console.log("Twitter: ", twitter);
-      const response = await fetch('/api/auth/mongodb', {
+      const response = await fetch('/api/auth/mongodb/team', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ username: session.user.name, description, barValue, twitter, image })
+        body: JSON.stringify({ username: session.user.name, description, twitter, projectDescription, projectName, image })
       });
 
     } catch (error) {
@@ -56,6 +54,18 @@ function TeamForm() {
     console.log("Twitter: ", e.target.value);
     setTwitter(e.target.value);
     console.log("Twitter: ", twitter);
+  };
+
+  const handleProjectDescriptionChange = (e) => {
+    console.log("Project Description: ", e.target.value);
+    setProjectDescription(e.target.value);
+    console.log("Project Description: ", projectDescription);
+  };
+
+  const handleProjectNameChange = (e) => {
+    console.log("Project Name: ", e.target.value);
+    setProjectName(e.target.value);
+    console.log("Project Name: ", projectName);
   };
 
   const handleImageChange = async (e) => {
@@ -78,37 +88,6 @@ function TeamForm() {
     toggleOpen();
   }
 
-  const checkIndex = (index) => {
-    console.log("Index: ", index);
-    setBarValue(index + 1);
-    // if (index == 5) {
-    //   setBarValue(5);
-    // } else {
-    //   setBarValue(index);
-    // }
-  }
-
-
-const Star = ({ index }) => {
-  const isActive = index < barValue;
-  return (
-    <svg 
-      onClick={() => checkIndex(index)} 
-      className={`${styles.star} ${isActive ? styles.active : ''}`}  
-      xmlns="http://www.w3.org/2000/svg" 
-      fill="none" 
-      viewBox="0 0 24 24" 
-      stroke="currentColor"
-    >
-      <path 
-        strokeLinecap="round" 
-        strokeLinejoin="round" 
-        strokeWidth="2" 
-        d="M12 15.89l-4.053 2.132.775-4.527-3.29-3.211 4.526-.657L12 4l2.042 4.137 4.527.657-3.29 3.211.776 4.527L12 15.89z" 
-      />
-    </svg>
-  )
-}
 
   
 
@@ -123,6 +102,17 @@ const Star = ({ index }) => {
         </label>
       </div>
       <input id="fileInput" type="file" style={{ display: "none" }} onChange={handleImageChange} />
+      <div className={styles.form__group}>
+          <input 
+            className={styles.form__field}
+            type="text"
+            name="projectName"
+            value={projectName}
+            onChange={handleProjectNameChange}
+            placeholder='Project Name'
+          />
+          <label htmlFor="Project Name" className={styles.form__label}>Project Name</label>
+        </div>
         <div className={styles.form__group}>
           <input 
             className={styles.form__field}
@@ -133,6 +123,17 @@ const Star = ({ index }) => {
             placeholder='Twitter'
           />
           <label htmlFor="Twitter" className={styles.form__label}>Twitter</label>
+        </div>
+        <div className={styles.form__group}>
+          <input 
+            className={styles.form__field}
+            type="text"
+            name="projectDescription"
+            value={projectDescription}
+            onChange={handleProjectDescriptionChange}
+            placeholder='Description'
+          />
+          <label htmlFor="Description" className={styles.form__label}>Description</label>
         </div>
         <div className={styles.dropdown} onClick={toggleOpen}>
             <div className={styles.dropdownheader}>{description || 'Select a need'}</div>
@@ -145,10 +146,10 @@ const Star = ({ index }) => {
                 </div>
             )}
         </div>
-      Experience
-      <div className={styles.starContainer}>
+      {/* Experience */}
+      {/* <div className={styles.starContainer}>
       {[0, 1, 2, 3, 4].map((index) => <Star key={index} index={index} />)}
-      </div>
+      </div> */}
 
       <button type="submit" className={styles.formButton}>Submit</button>
     </form>

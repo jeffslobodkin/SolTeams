@@ -11,4 +11,20 @@
     margin: 10px; // Adjust this to control the space between cards
     flex-basis: calc((100% / 6) - 20px); // This is for 6 cards per row, adjust the divisor (6) for more or less cards per row. Also adjust the pixel value for the space between cards
   }
+
+  .toggle{
+    margin-left: 50%;
+    color: white;
+    font-size: 17px;
+    background-color: rgb(85, 85, 165);
+    border-radius: 5px;
+    padding: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  }
   
+  .toggle:hover {
+    transform: translateY(-4px) translateX(-2px);
+    box-shadow: 2px 5px 0 0 rgb(85, 85, 165);
+  };

@@ -39,7 +39,7 @@ function DescriptionForm() {
       console.log("Description: ", description);
       console.log("Bar Value: ", barValue);
       console.log("Twitter: ", twitter);
-      const response = await fetch('/api/auth/mongodb', {
+      const response = await fetch('/api/auth/mongodb/user', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

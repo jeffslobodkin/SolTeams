@@ -1,17 +1,29 @@
-"use client"
-
 import { useState, useEffect } from 'react';
 import Card from './Card';
+import TeamCard from './TeamCard';
 import { useSession } from "next-auth/react";
 import styles from './inventory.module.scss';
 
 function Inventory({ searchValue }) {
   const [users, setUsers] = useState([]);
-  //const [filteredUsers, setFilteredUsers] = useState([]);
+  const [teams, setTeams] = useState([]);
+  const [displayTeams, setDisplayTeams] = useState(false);
   const { data: session } = useSession();
 
   async function getUsers() {
-    const response = await fetch('/api/auth/mongodb', {
+    const response = await fetch('/api/auth/mongodb/user', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+    });
+    const text = await response.text();
+    const data = JSON.parse(text);
+    return data;
+  }
+
+  async function getTeams() {
+    const response = await fetch('/api/auth/mongodb/team', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json'
@@ -25,39 +37,34 @@ function Inventory({ searchValue }) {
   useEffect(() => {
     getUsers().then((users) => {
       setUsers(users);
-      //setFilteredUsers(users);
+    });
+    getTeams().then((teams) => {
+      setTeams(teams);
     });
   }, []);
 
-  // useEffect(() => {
-  //   if(searchValue === "") {
-  //     setFilteredUsers(users);
-  //   } else {
-  //     setFilteredUsers(users.filter(user => user.description.toLowerCase().includes(searchValue.toLowerCase())));
-  //   }
-  // }, [searchValue, users]);
-
-  // const handleSearchChange = (event) => {
-  //   setSearchValue(event.target.value);
-  // };
-
   const filteredUsers = users.filter(user => user.description.toLowerCase().includes(searchValue.toLowerCase()));
+  const filteredTeams = teams.filter(team => team.description.toLowerCase().includes(searchValue.toLowerCase()));
 
   return (
     <div>
-      {/* <input 
-        type="text" 
-        className={styles.searchBar}
-        value={searchValue} 
-        onChange={handleSearchChange} 
-        placeholder="Search by description..." 
-      /> */}
+      <button className={styles.toggle} onClick={() => setDisplayTeams(!displayTeams)}>
+        {displayTeams ? "Show Users" : "Show Teams"}
+      </button>
       <div className={styles.inventoryContainer}>
-      {filteredUsers.map(user => (
-        <div key={user._id} className={styles.cardWrapper}>
-          <Card user={user} />
-        </div>
-      ))}
+        {displayTeams ? (
+          filteredTeams.map(team => (
+            <div key={team._id} className={styles.cardWrapper}>
+              <TeamCard team={team} />
+            </div>
+          ))
+        ) : (
+          filteredUsers.map(user => (
+            <div key={user._id} className={styles.cardWrapper}>
+              <Card user={user} />
+            </div>
+          ))
+        )}
       </div>
     </div>
   );
