@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import styles from './TeamApplications.module.scss';
 import ApplicantCard from './ApplicantCard'; // You'll need to create this component
-//import MemberCard from './MemberCard'; // You'll need to create this component
+import MemberCard from './MemberCard'; // You'll need to create this component
 
 const TeamApplications = () => {
     const [activeTab, setActiveTab] = useState('applicants');
@@ -30,7 +30,7 @@ const TeamApplications = () => {
             </div>
             <div className={styles.cardContainer}>
                 {activeTab === 'applicants' && <ApplicantCard />} {/* Fetch and pass the data needed here */}
-                {/* {activeTab === 'members' && <MemberCard />} Fetch and pass the data needed here */}
+                {activeTab === 'members' && <MemberCard />}
             </div>
         </div>
     );

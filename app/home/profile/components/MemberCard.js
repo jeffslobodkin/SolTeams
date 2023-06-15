@@ -2,15 +2,15 @@
 
 import { useSession } from "next-auth/react";
 import { useEffect, useState } from 'react';
-import styles from './ApplicantCard.module.scss';
+import styles from './MemberCard.module.scss';
 
 
-const ApplicantCard = () => {
+const MemberCard = () => {
     const { data: session } = useSession();
-    const [applications, setApplications] = useState([]);
+    const [members, setmembers] = useState([]);
 
-    const fetchApplications = async () => {
-        const response = await fetch('/api/auth/mongodb/recApplications', {
+    const fetchMembers = async () => {
+        const response = await fetch('/api/auth/mongodb/getMembers', {
             method: 'POST',
             headers: {
             'Content-Type': 'application/json',
@@ -19,12 +19,12 @@ const ApplicantCard = () => {
         });
 
         const data = await response.json();
-        setApplications(data);
+        setmembers(data);
     };
 
 
     useEffect(() => {
-        fetchApplications();
+        fetchMembers();
     }, []);
 
     const handleAccept = async (applicant) => {
@@ -49,15 +49,13 @@ const ApplicantCard = () => {
 
     return (
         <div className={styles.applicantContainer}>
-            {applications.map(applicant => (
+            {members.map(applicant => (
                 <div key={applicant} className={styles.applicant}>
                     <span>{applicant}</span>
-                    <button onClick={() => handleAccept(applicant)}>Accept</button>
-                    <button onClick={() => handleMessage(applicant)}>Message</button>
                 </div>
             ))}
         </div>
     );
 };
 
-export default ApplicantCard;
+export default MemberCard;
