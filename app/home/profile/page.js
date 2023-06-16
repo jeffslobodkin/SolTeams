@@ -5,6 +5,7 @@ import TeamForm from "./components/TeamForm.js";
 import TeamApplications from "./components/TeamApplications.js"; // you need to create this component
 import styles from './page.module.scss';
 import Navbar from "./components/Navbar.js";
+import ChatUI from "./components/ChatUI.js";
 
 export default function Profile( { setIsProfile } ) {
     const [activeForm, setActiveForm] = useState('solo');
@@ -44,6 +45,12 @@ export default function Profile( { setIsProfile } ) {
                     >
                         Apps
                     </button>
+                    {/* <button
+                        className={`${styles.toggleButton} ${activeForm === 'chat' && styles.active}`}
+                        onClick={() => handleClick('chat')}
+                    >
+                        Chat
+                    </button> */}
                 </div>
                 <div className={styles.forms}>
                     { activeForm === 'solo' && <div className={`${styles.form} ${styles.activeForm}`}>
@@ -55,6 +62,9 @@ export default function Profile( { setIsProfile } ) {
                     { activeForm === 'applications' && <div className={`${styles.form} ${styles.activeForm}`}>
                         <TeamApplications /> {/* You need to create this component */}
                     </div>}
+                    {/* { activeForm === 'chat' && <div className={`${styles.form} ${styles.activeForm}`}>
+                        <ChatUI /> 
+                    </div>} */}
                 </div>
             </div>
         </div>

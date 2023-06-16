@@ -1,0 +1,47 @@
+.chatContainer {
+    display: flex;
+    height: 100%;
+  }
+  
+  .conversationList {
+    width: 30%;
+    background-color: #f0f0f0;
+    overflow-y: scroll;
+  }
+  
+  .conversationItem {
+    padding: 10px;
+    cursor: pointer;
+  
+    &:hover {
+      background-color: #e0e0e0;
+    }
+  
+    &.active {
+      background-color: #d0d0d0;
+    }
+  }
+  
+  .messageView {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .message {
+    padding: 10px;
+    border-bottom: 1px solid #e0e0e0;
+  }
+  
+  .messageInput {
+    display: flex;
+    padding: 10px;
+    border-top: 1px solid #e0e0e0;
+  
+    input {
+      flex-grow: 1;
+      margin-right: 10px;
+    }
+  }
+  
